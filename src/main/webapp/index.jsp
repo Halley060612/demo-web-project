@@ -1,40 +1,19 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<%@ page import="java.time.LocalTime" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Página JSP de Ejemplo</title>
+    <title>Login en JSP</title>
 </head>
 <body>
-    <h1>Bienvenido a mi página JSP</h1>
-
-    <% 
-        // Obtener la hora actual
-        LocalTime horaActual = LocalTime.now();
-        String mensaje;
-
-        if (horaActual.getHour() < 12) {
-            mensaje = "¡Buenos días!";
-        } else if (horaActual.getHour() < 18) {
-            mensaje = "¡Buenas tardes!";
-        } else {
-            mensaje = "¡Buenas noches!";
-        }
-    %>
-
-    <p><%= mensaje %></p>
-
-    <form action="saludo.jsp" method="POST">
-        <label>Ingresa tu nombre:</label>
-        <input type="text" name="nombre">
-        <button type="submit">Enviar</button>
+    <h2>Iniciar sesión</h2>
+    <form action="procesarLogin.jsp" method="POST">
+        <label>Usuario:</label>
+        <input type="text" name="usuario" required>
+        <br>
+        <label>Contraseña:</label>
+        <input type="password" name="password" required>
+        <br>
+        <button type="submit">Ingresar</button>
     </form>
-
-    <% 
-        String nombre = request.getParameter("nombre");
-        if (nombre != null && !nombre.trim().isEmpty()) {
-    %>
-        <h2>Hola, <%= nombre %>! Espero que tengas un gran día.</h2>
-    <% } %>
 </body>
 </html>
